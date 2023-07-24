@@ -1,0 +1,35 @@
+<div class="container"  >
+    <div class=" text-center">
+        <h1 class="my-3">Product Details</h1>
+        <div class="text-center">
+            <input class="text-center"(keyup)="search($event)" type="text" placeholder="Search Products"
+                class="form-control">
+        </div> <br><br><br>
+        <div class="row">
+            <div class="col- md-12 " style="display: flex; flex-direction: row;flex-wrap:wrap;">
+                <div class="card" style="width: 18rem;" *ngFor=" let product of productdetails|search:searchkey:'title'">
+               
+
+
+                    <img [src]="product.images[0]" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}
+                        </h5>
+                        <p class="card-text">{{product.description}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{product.brand}}</li>
+                        <li class="list-group-item">{{product.price}}</li>
+                        <li class="list-group-item"><button>Buy Now</button></li>
+                    </ul>
+
+                </div>
+
+            </div>
+            <div *ngIf="( productdetails|search:searchkey:'title') as result" class="text-center mt-4">
+
+                <h2 *ngIf="result.length == 0">No products found</h2>  
+              
+              </div>
+            
+        </div>
